@@ -34,9 +34,7 @@ func (uc *usecase) GetAll() []entity.Quote {
 }
 
 func (uc *usecase) Set(value entity.Quote) {
-	uc.keyCounter.Add(1)
-	var key int64
-	uc.keyCounter.Store(key)
+	key := uc.keyCounter.Add(1)
 	uc.repo.Set(strconv.Itoa(int(key)), value)
 	log.Println("successeful set value")
 }
