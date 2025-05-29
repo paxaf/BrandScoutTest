@@ -7,29 +7,49 @@ import (
 )
 
 type Engine struct {
-	partitions []*HashTable
+	partition *HashTable
 }
 
 func NewEngine() (*Engine, error) {
 	engine := &Engine{
-		partitions: make([]*HashTable, 1),
+		partition: NewHashTable(),
 	}
-	engine.partitions[0] = NewHashTable()
+	engine.partition = NewHashTable()
 	return engine, nil
 }
 
 func (e *Engine) Set(key string, value entity.Quote) {
-	e.partitions[0].Set(key, value)
+	e.partition.Set(key, value)
 	log.Println("succeseful set query")
 }
 
 func (e *Engine) Get(key string) (entity.Quote, bool) {
-	value, found := e.partitions[0].Get(key)
+	value, found := e.partition.Get(key)
 	log.Println("succesefull get query")
 	return value, found
 }
 
 func (e *Engine) Del(key string) {
-	e.partitions[0].Del(key)
+	e.partition.Del(key)
 	log.Println("succesefull delete query")
+}
+
+func (e *Engine) GetAllByAuthor(author string) ([]entity.Quote, bool) {
+	var res []entity.Quote
+	for _, val := range e.partition.data {
+		if val.Author == author {
+			res = append(res, val)
+		}
+	}
+	if len(res) < 1 {
+		return nil, false
+	}
+	return res, true
+}
+
+func (e *Engine) GetRandom() (entity.Quote, bool) {
+	for _, val := range e.partition.data {
+		return val, true
+	}
+	return entity.Quote{}, false
 }

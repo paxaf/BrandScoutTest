@@ -1,6 +1,6 @@
 package entity
 
 type Quote struct {
-	author string
-	phrase string
+	Author string
+	Phrase string
 }
