@@ -1,187 +1,66 @@
 #0 building with "desktop-linux" instance using docker driver
 
 #1 [quotes-service internal] load build definition from Dockerfile
-#1 transferring dockerfile: 368B 0.0s done
+#1 transferring dockerfile: 370B 0.0s done
 #1 DONE 0.1s
 
-#2 [quotes-service internal] load metadata for docker.io/library/alpine:3.21
-#2 ...
+#2 [quotes-service internal] load metadata for docker.io/library/golang:1.24
+#2 DONE 1.6s
 
-#3 [quotes-service internal] load metadata for docker.io/library/golang:1.24
-#3 DONE 0.5s
-
-#2 [quotes-service internal] load metadata for docker.io/library/alpine:3.21
-#2 DONE 0.5s
+#3 [quotes-service internal] load metadata for docker.io/library/alpine:3.21
+#3 DONE 1.6s
 
 #4 [quotes-service internal] load .dockerignore
-#4 transferring context: 2B 0.0s done
+#4 transferring context: 2B done
 #4 DONE 0.1s
 
 #5 [quotes-service internal] load build context
 #5 DONE 0.0s
 
 #6 [quotes-service stage-1 1/3] FROM docker.io/library/alpine:3.21@sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
+#6 resolve docker.io/library/alpine:3.21@sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
 #6 resolve docker.io/library/alpine:3.21@sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c 0.1s done
 #6 DONE 0.1s
 
-#7 [quotes-service builder 1/6] FROM docker.io/library/golang:1.24@sha256:4c0a1814a7c6c65ece28b3bfea14ee3cf83b5e80b81418453f0e9d5255a5d7b8
+#7 [quotes-service builder 1/5] FROM docker.io/library/golang:1.24@sha256:4c0a1814a7c6c65ece28b3bfea14ee3cf83b5e80b81418453f0e9d5255a5d7b8
 #7 resolve docker.io/library/golang:1.24@sha256:4c0a1814a7c6c65ece28b3bfea14ee3cf83b5e80b81418453f0e9d5255a5d7b8 0.1s done
 #7 DONE 0.1s
 
 #5 [quotes-service internal] load build context
-#5 transferring context: 10.06kB 0.1s done
+#5 transferring context: 26.32kB 0.1s done
 #5 DONE 0.1s
 
-#8 [quotes-service builder 2/6] WORKDIR /app
+#8 [quotes-service builder 2/5] WORKDIR /app
 #8 CACHED
 
-#9 [quotes-service builder 3/6] COPY . .
-#9 DONE 0.3s
+#9 [quotes-service builder 3/5] COPY . .
+#9 DONE 0.4s
 
-#10 [quotes-service builder 4/6] RUN go mod download
-#10 0.563 go: no module dependencies to download
-#10 DONE 0.6s
+#10 [quotes-service builder 4/5] RUN go mod download
+#10 0.768 go: no module dependencies to download
+#10 DONE 0.9s
 
-#11 [quotes-service builder 5/6] RUN go test ./... -race -cover -v
-#11 22.27 	github.com/paxaf/BrandScoutTest/cmd		coverage: 0.0% of statements
-#11 22.28 	github.com/paxaf/BrandScoutTest/internal/app		coverage: 0.0% of statements
-#11 23.77 === RUN   TestAddHandler
-#11 23.77 === PAUSE TestAddHandler
-#11 23.77 === RUN   TestGetAllHandler
-#11 23.77 === PAUSE TestGetAllHandler
-#11 23.77 === RUN   TestGetRandHandler
-#11 23.77 === PAUSE TestGetRandHandler
-#11 23.77 === RUN   TestByAuthorHandler
-#11 23.77 === PAUSE TestByAuthorHandler
-#11 23.77 === RUN   TestDeleteHandler
-#11 23.77 === PAUSE TestDeleteHandler
-#11 23.77 === RUN   TestParseQuoteFromReq
-#11 23.77 === PAUSE TestParseQuoteFromReq
-#11 23.77 === CONT  TestGetAllHandler
-#11 23.77 === CONT  TestByAuthorHandler
-#11 23.77 === RUN   TestByAuthorHandler/success
-#11 23.77 === PAUSE TestByAuthorHandler/success
-#11 23.77 === CONT  TestDeleteHandler
-#11 23.77 === RUN   TestGetAllHandler/success_with_quotes
-#11 23.77 === CONT  TestGetRandHandler
-#11 23.77 === RUN   TestGetRandHandler/success
-#11 23.77 === CONT  TestAddHandler
-#11 23.77 === PAUSE TestGetRandHandler/success
-#11 23.77 === RUN   TestAddHandler/success
-#11 23.77 === RUN   TestByAuthorHandler/no_content
-#11 23.77 === PAUSE TestAddHandler/success
-#11 23.77 === RUN   TestDeleteHandler/success
-#11 23.77 === PAUSE TestByAuthorHandler/no_content
-#11 23.77 === PAUSE TestDeleteHandler/success
-#11 23.77 === CONT  TestParseQuoteFromReq
-#11 23.77 === RUN   TestGetRandHandler/no_content
-#11 23.77 === RUN   TestAddHandler/wrong_method
-#11 23.77 === RUN   TestByAuthorHandler/missing_author_parameter
-#11 23.77 === PAUSE TestAddHandler/wrong_method
-#11 23.77 === RUN   TestAddHandler/invalid_content_type
-#11 23.77 === PAUSE TestByAuthorHandler/missing_author_parameter
-#11 23.77 === PAUSE TestGetRandHandler/no_content
-#11 23.77 === CONT  TestGetRandHandler/no_content
-#11 23.77 === CONT  TestGetRandHandler/success
-#11 23.77 === PAUSE TestGetAllHandler/success_with_quotes
-#11 23.77 === RUN   TestDeleteHandler/not_found
-#11 23.77 === PAUSE TestAddHandler/invalid_content_type
-#11 23.77 === RUN   TestGetAllHandler/empty_storage
-#11 23.77 === RUN   TestAddHandler/malformed_JSON
-#11 23.77 === CONT  TestByAuthorHandler/missing_author_parameter
-#11 23.77 === PAUSE TestDeleteHandler/not_found
-#11 23.77 --- PASS: TestGetRandHandler (0.00s)
-#11 23.77     --- PASS: TestGetRandHandler/no_content (0.00s)
-#11 23.77     --- PASS: TestGetRandHandler/success (0.00s)
-#11 23.77 === CONT  TestByAuthorHandler/success
-#11 23.77 === RUN   TestDeleteHandler/service_error
-#11 23.77 === RUN   TestParseQuoteFromReq/valid
-#11 23.77 === PAUSE TestDeleteHandler/service_error
-#11 23.77 === PAUSE TestParseQuoteFromReq/valid
-#11 23.77 === PAUSE TestAddHandler/malformed_JSON
-#11 23.77 === PAUSE TestGetAllHandler/empty_storage
-#11 23.77 === CONT  TestAddHandler/success
-#11 23.77 === RUN   TestGetAllHandler/wrong_method
-#11 23.77 === CONT  TestByAuthorHandler/no_content
-#11 23.77 === RUN   TestDeleteHandler/missing_id_in_path
-#11 23.77 === RUN   TestParseQuoteFromReq/invalid_content_type
-#11 23.77 === PAUSE TestGetAllHandler/wrong_method
-#11 23.77 === CONT  TestGetAllHandler/wrong_method
-#11 23.77 === PAUSE TestParseQuoteFromReq/invalid_content_type
-#11 23.77 === CONT  TestAddHandler/malformed_JSON
-#11 23.77 === RUN   TestParseQuoteFromReq/malformed_json
-#11 23.77 === CONT  TestAddHandler/invalid_content_type
-#11 23.77 --- PASS: TestByAuthorHandler (0.00s)
-#11 23.77     --- PASS: TestByAuthorHandler/missing_author_parameter (0.00s)
-#11 23.77     --- PASS: TestByAuthorHandler/success (0.00s)
-#11 23.77     --- PASS: TestByAuthorHandler/no_content (0.00s)
-#11 23.77 === PAUSE TestDeleteHandler/missing_id_in_path
-#11 23.77 === CONT  TestAddHandler/wrong_method
-#11 23.77 === CONT  TestGetAllHandler/empty_storage
-#11 23.77 --- PASS: TestAddHandler (0.00s)
-#11 23.77     --- PASS: TestAddHandler/success (0.00s)
-#11 23.77     --- PASS: TestAddHandler/malformed_JSON (0.00s)
-#11 23.77     --- PASS: TestAddHandler/invalid_content_type (0.00s)
-#11 23.77     --- PASS: TestAddHandler/wrong_method (0.00s)
-#11 23.77 === CONT  TestGetAllHandler/success_with_quotes
-#11 23.77 === PAUSE TestParseQuoteFromReq/malformed_json
-#11 23.77 === CONT  TestDeleteHandler/not_found
-#11 23.77 === CONT  TestDeleteHandler/service_error
-#11 23.77 2025/05/29 13:24:55 not found
-#11 23.77 2025/05/29 13:24:55 mock error
-#11 23.77 === CONT  TestDeleteHandler/missing_id_in_path
-#11 23.77 === CONT  TestDeleteHandler/success
-#11 23.77 2025/05/29 13:24:55 not found
-#11 23.77 === RUN   TestParseQuoteFromReq/empty_body
-#11 23.77 --- PASS: TestGetAllHandler (0.00s)
-#11 23.77     --- PASS: TestGetAllHandler/wrong_method (0.00s)
-#11 23.77     --- PASS: TestGetAllHandler/empty_storage (0.00s)
-#11 23.77     --- PASS: TestGetAllHandler/success_with_quotes (0.00s)
-#11 23.77 === PAUSE TestParseQuoteFromReq/empty_body
-#11 23.77 === CONT  TestParseQuoteFromReq/invalid_content_type
-#11 23.77 === CONT  TestParseQuoteFromReq/empty_body
-#11 23.77 --- PASS: TestDeleteHandler (0.00s)
-#11 23.77     --- PASS: TestDeleteHandler/not_found (0.00s)
-#11 23.77     --- PASS: TestDeleteHandler/service_error (0.00s)
-#11 23.77     --- PASS: TestDeleteHandler/missing_id_in_path (0.00s)
-#11 23.77     --- PASS: TestDeleteHandler/success (0.00s)
-#11 23.77 === CONT  TestParseQuoteFromReq/valid
-#11 23.77 === CONT  TestParseQuoteFromReq/malformed_json
-#11 23.77 --- PASS: TestParseQuoteFromReq (0.01s)
-#11 23.77     --- PASS: TestParseQuoteFromReq/invalid_content_type (0.00s)
-#11 23.77     --- PASS: TestParseQuoteFromReq/empty_body (0.00s)
-#11 23.77     --- PASS: TestParseQuoteFromReq/malformed_json (0.00s)
-#11 23.77     --- PASS: TestParseQuoteFromReq/valid (0.00s)
-#11 23.77 PASS
-#11 23.77 coverage: 79.7% of statements
-#11 23.77 ok  	github.com/paxaf/BrandScoutTest/internal/controller	1.041s	coverage: 79.7% of statements
-#11 23.77 	github.com/paxaf/BrandScoutTest/internal/controller/middleware		coverage: 0.0% of statements
-#11 23.77 ?   	github.com/paxaf/BrandScoutTest/internal/entity	[no test files]
-#11 23.77 ?   	github.com/paxaf/BrandScoutTest/internal/repo	[no test files]
-#11 23.77 	github.com/paxaf/BrandScoutTest/internal/repo/engine		coverage: 0.0% of statements
-#11 23.77 	github.com/paxaf/BrandScoutTest/internal/usecase		coverage: 0.0% of statements
-#11 DONE 24.3s
+#11 [quotes-service builder 5/5] RUN go build -o quotes_app ./cmd
+#11 DONE 15.7s
 
-#12 [quotes-service builder 6/6] RUN go build -o quotes_app ./cmd
-#12 DONE 14.6s
+#12 [quotes-service stage-1 2/3] WORKDIR /app
+#12 CACHED
 
-#13 [quotes-service stage-1 2/3] WORKDIR /app
-#13 CACHED
+#13 [quotes-service stage-1 3/3] COPY --from=builder /app/quotes_app quotes_app
+#13 DONE 0.2s
 
-#14 [quotes-service stage-1 3/3] COPY --from=builder /app/quotes_app quotes_app
-#14 CACHED
+#14 [quotes-service] exporting to image
+#14 exporting layers
+#14 exporting layers 0.8s done
+#14 exporting manifest sha256:657435f3be1269c25cf6d5c596258b7988463f974318cceedd359dee1154e989 0.0s done
+#14 exporting config sha256:d2bb6c594b4f9b31f0b02fcc8c0804aff398e8765703b5ee0e0e33d5743f5404 0.0s done
+#14 exporting attestation manifest sha256:1da3f66da927e3ab2abbcd2be652c2b3f4052bb56953e797391e8ed376731be0
+#14 exporting attestation manifest sha256:1da3f66da927e3ab2abbcd2be652c2b3f4052bb56953e797391e8ed376731be0 0.1s done
+#14 exporting manifest list sha256:1693601e39be0f3152658c09aa338af6091e042db03343898e45814067870384 0.0s done
+#14 naming to docker.io/library/brandscouttest-quotes-service:latest
+#14 naming to docker.io/library/brandscouttest-quotes-service:latest done
+#14 unpacking to docker.io/library/brandscouttest-quotes-service:latest 0.1s done
+#14 DONE 1.2s
 
-#15 [quotes-service] exporting to image
-#15 exporting layers done
-#15 exporting manifest sha256:a406930fe401f39f92200bae960e83d0205dcb28dc1066f614741c4d8e793945 0.0s done
-#15 exporting config sha256:05797b76f7316b7afdfd57c75b0e8c40301a399739604941d3f748dfc1ba912a
-#15 exporting config sha256:05797b76f7316b7afdfd57c75b0e8c40301a399739604941d3f748dfc1ba912a 0.0s done
-#15 exporting attestation manifest sha256:27d0725ef388a629dab68f96cdc1b42ba9b9f7fd4c642dabf6b095f65bf6a919 0.1s done
-#15 exporting manifest list sha256:e20fe32e8a3dc190a9455674799fa56903bb122bcaceb60e9f91a92ba4c1743b
-#15 exporting manifest list sha256:e20fe32e8a3dc190a9455674799fa56903bb122bcaceb60e9f91a92ba4c1743b 0.0s done
-#15 naming to docker.io/library/brandscouttest-quotes-service:latest done
-#15 unpacking to docker.io/library/brandscouttest-quotes-service:latest 0.1s done
-#15 DONE 0.4s
-
-#16 [quotes-service] resolving provenance for metadata file
-#16 DONE 0.0s
+#15 [quotes-service] resolving provenance for metadata file
+#15 DONE 0.0s
