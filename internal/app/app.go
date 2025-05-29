@@ -11,6 +11,8 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/paxaf/BrandScoutTest/internal/controller"
+	"github.com/paxaf/BrandScoutTest/internal/controller/middleware"
 	storage "github.com/paxaf/BrandScoutTest/internal/repo/engine"
 	"github.com/paxaf/BrandScoutTest/internal/usecase"
 )
@@ -31,7 +33,14 @@ func New() (*App, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed init repo: %w", err)
 	}
-	_ = usecase.New(repo)
+	service := usecase.New(repo)
+	handler := controller.New(service)
+	http.Handle("/quotes", middleware.SimpleMiddleware(
+		http.HandlerFunc(handler.GetAll),
+		http.HandlerFunc(handler.ByAutor),
+		http.HandlerFunc(handler.Add)))
+	http.HandleFunc("/quotes/random", handler.GetRand)
+	http.HandleFunc("/quotes/", handler.Delete)
 	addr := net.JoinHostPort(appHost, appPort)
 	app.apiServer = &http.Server{
 		Addr:              addr,

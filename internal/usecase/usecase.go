@@ -10,8 +10,9 @@ import (
 type Usecase interface {
 	Delete(key string) error
 	Random() (entity.Quote, bool)
-	GetAllByAuthor(author string)
+	GetAllByAuthor(author string) ([]entity.Quote, bool)
 	GetAll() []entity.Quote
+	Set(value entity.Quote)
 }
 
 type usecase struct {
