@@ -1,0 +1,7 @@
+services:
+  quotes-service:
+    build:
+      context: .
+    container_name: quotes_service
+    ports:
+      - "8080:8080"

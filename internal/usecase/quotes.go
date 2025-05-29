@@ -35,6 +35,8 @@ func (uc *usecase) GetAll() []entity.Quote {
 
 func (uc *usecase) Set(value entity.Quote) {
 	key := uc.keyCounter.Add(1)
-	uc.repo.Set(strconv.Itoa(int(key)), value)
+	keyStr := strconv.Itoa(int(key))
+	value.Id = keyStr
+	uc.repo.Set(keyStr, value)
 	log.Println("successeful set value")
 }
