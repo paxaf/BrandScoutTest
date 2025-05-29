@@ -53,3 +53,11 @@ func (e *Engine) GetRandom() (entity.Quote, bool) {
 	}
 	return entity.Quote{}, false
 }
+
+func (e *Engine) GetAll() []entity.Quote {
+	var res []entity.Quote
+	for _, val := range e.partition.data {
+		res = append(res, val)
+	}
+	return res
+}

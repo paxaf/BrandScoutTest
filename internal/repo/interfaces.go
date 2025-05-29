@@ -8,4 +8,5 @@ type Repository interface {
 	Get(key string) (entity.Quote, bool)
 	GetAllByAuthor(author string) ([]entity.Quote, bool)
 	GetRandom() (entity.Quote, bool)
+	GetAll() []entity.Quote
 }
