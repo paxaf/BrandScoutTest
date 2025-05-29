@@ -46,7 +46,6 @@ go run cmd/server/main.go
 docker-compose up -d --build
 ## (не запускайте их одновременно, они слушают один и тот же порт)
 ```
-## API Endpoints
 
 ## API Endpoints
 
